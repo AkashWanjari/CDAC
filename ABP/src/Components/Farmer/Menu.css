@@ -1,0 +1,14 @@
+#Delete{
+    display: none;
+    
+}
+
+#edit{
+    display:none;
+}
+#addproduct{
+    display: none;
+}
+#view{
+    display:block;
+}
