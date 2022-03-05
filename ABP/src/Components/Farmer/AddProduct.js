@@ -7,29 +7,39 @@ function AddProduct() {
   const [pname, setPname] = useState("");
   const [min_price, setMinPrice] = useState("");
   const [quantity, setQuantity] = useState("");
-  const [endbdate, setEndbdate] = useState("");
-  const [img,setImg] = useState(" ");
+  const [endBDate, setEndbdate] = useState("");
+  // const [img,setImg] = useState(" ");
+  const [img, setFile] = useState();
+  const [fileName, setFileName] = useState("");
   
   const onChangePicture = e => {
    
-    setImg(e.target.files[0]);
-};
+    setFile(URL.createObjectURL(e.target.files[0]));
+    setFileName(e.target.files[0].name);
+  };
 
 const navigate =useNavigate();
   function handleSubmit(event){
     event.preventDefault();
-    
+    // const img = new FormData();
+    //     img.append("file", file);
+    //     img.append("fileName", fileName);
+
     let product = {
       pname,
       min_price,
      quantity,
-      endbdate,
+      endBDate,
       img
     };
+    
 
+
+console.log(img);
     FarmerService.addProduct(product).then(res => {
       console.log(res);
       console.log(res.data);
+      
 let path=`farmer`;
 navigate(path); 
       
@@ -64,7 +74,7 @@ navigate(path);
                 <div className="form-group">
                
     
-     <input type="date" className="form-control" placeholder="Select EndDate"  value={endbdate}  onChange={(e) => setEndbdate(e.target.value)}  />
+     <input type="date" className="form-control" placeholder="Select EndDate"  value={endBDate}  onChange={(e) => setEndbdate(e.target.value)}  />
                 </div>
 
                 <div className="form-group">

@@ -21,13 +21,17 @@ export default function LoginNew() {
     event.preventDefault();
     let user ={email, password};
     console.log('user =>' +JSON.stringify(user));
+    
     Service.postUser(user).then(res=>{
+      const token =localStorage.setItem=("thisistoken");
+      const vtoken =localStorage.getItem("token");
       console.log(res.data)
+      console.log(token)
+      console.log(vtoken)
+      if(vtoken === token){
       let path= `farmer`
       navigate(path);
-   
-    
-            
+      }
         })
     }
   
