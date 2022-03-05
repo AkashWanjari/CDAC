@@ -4,9 +4,10 @@ const API_BASE_URL = "http://localhost:7777/api/product";
 
 class FarmerService {
 
-    getUser(){
-        return axios.get(API_BASE_URL);
-    }
+      getProduct(){
+        return axios.get(API_BASE_URL+"/GetFarmerDetails");
+    
+}
   
      addProduct(product){
         return axios.post(API_BASE_URL +'/addProduct',product);

@@ -13,6 +13,7 @@ import AddProduct from './Farmer/AddProduct'
 import DeleteProduct from './Farmer/DeleteProduct';
 import ViewProduct from './Farmer/ViewProduct';
 import EditProduct from "./Farmer/EditProduct"
+import Bidder from './Bidder/Bidder';
 export default function Header() {
   
   return (
@@ -57,6 +58,7 @@ export default function Header() {
             <Route exact path='/' element={<Carousel/>} />
             <Route path="/sign-in/" element={<Login/>} />
             <Route path="/sign-in/farmer" element={<Farmer/>} />
+            <Route path="/sign-in/bidder" element={<Bidder/>} />
 
   
           
@@ -66,10 +68,7 @@ export default function Header() {
             <Route path="/bsign-up" element={<BSignUp/>} />
             
 
-           <Route path="/viewProduct" element={<ViewProduct/>} exact></Route>
-          <Route path="/addProduct" element={<AddProduct/>} exact></Route> 
-          <Route path="/editProduct" element={<EditProduct/>} exact></Route>
-          <Route path="/DeleteProduct" element={<DeleteProduct/>} exact></Route> 
+           
           
           </Routes>
 </Router>
