@@ -1,0 +1,7 @@
+this is agriculture bidding portal project (ReactJs + springboot+ mysql)
+made for CDAC BANGLORE KP
+ contribute by:-
+Akash wanjari
+Swapnil choudhari
+Durgesh ahire
+Sarang pendke
