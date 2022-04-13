@@ -18,10 +18,14 @@ function Footer() {
 
        
         <h5 class="font-weight-bold text-uppercase mb-4">VISION AND MISSION</h5>
-        <p>Here you can use rows and columns to organize your footer content.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit amet numquam iure provident voluptate
-          esse
-          quasi, veritatis totam voluptas nostrum.</p>
+        <p>Userfriendly portal for farmers and buyers</p>
+        <p>To make things easier for farmer for selling their goods by eliminating middle
+man. For maximize profit for buyer and farmer via Bidding System.<hr/>
+ To empower farmers by delivering efficiency, transparency and traceability in
+the Agri value chain through technology<hr/>
+Empower stakeholders across the Agri value chain to enhance small farm
+owner's incomes in a responsible, resourceful and reliable.<hr/>
+ For buyers, we assure quality whilst mitigating counterparty risk</p>
 
       </div>
      
@@ -37,7 +41,8 @@ function Footer() {
           
           <li>
             <p>
-              <a href="#!">ABOUT US</a>
+              <a href="#aboutus">ABOUT US</a><br/>
+              C-DAC BANGALORE
             </p>
           </li>
           <li>

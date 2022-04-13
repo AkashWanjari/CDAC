@@ -8,6 +8,13 @@ class FarmerService {
         return axios.get(API_BASE_URL+"/GetFarmerDetails");
     
 }
+getProductbyFarmerid(id){
+    return axios.get(API_BASE_URL+"/getProductsUsingFarmerId",{params :{usrid:id}});
+
+}
+delProduct(id){
+    return axios.get(API_BASE_URL+"/deleteExpiredBidProduct",{params :{pid:id}});
+}
   
      addProduct(product){
         return axios.post(API_BASE_URL +'/addProduct',product);

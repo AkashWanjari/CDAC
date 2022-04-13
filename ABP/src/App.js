@@ -13,11 +13,12 @@ function App() {
 
   return (
     <>
-    <Header/>
+    <Header />
 
     
-    <Card/>
-   <Footer/>
+    {/* <Card/> */}
+    <div id='aboutus'><Footer/></div>
+   
   
     
     </>

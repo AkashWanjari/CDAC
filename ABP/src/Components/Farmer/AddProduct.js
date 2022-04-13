@@ -1,97 +1,140 @@
-import React ,{useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import "../Login and Register/Login.css"
 import FarmerService from '../../Service/FarmerService';
 import { useNavigate } from 'react-router-dom';
+import { Col, Row, ToastContainer} from 'react-bootstrap';
+import { Alert } from 'bootstrap';
+import "./Add.css"
 
 function AddProduct() {
   const [pname, setPname] = useState("");
-  const [min_price, setMinPrice] = useState("");
+  const [minPrice, setMinPrice] = useState("");
   const [quantity, setQuantity] = useState("");
   const [endBDate, setEndbdate] = useState("");
-  // const [img,setImg] = useState(" ");
+  const [fname, setfname] = useState("");
+  const [discription, setdescription] = useState('')
   const [img, setFile] = useState();
   const [fileName, setFileName] = useState("");
-  
+  let id = JSON.parse(localStorage.getItem("id"));
   const onChangePicture = e => {
-   
+
     setFile(URL.createObjectURL(e.target.files[0]));
     setFileName(e.target.files[0].name);
   };
+  let name = JSON.stringify(localStorage.getItem("name"));
+  const newname = name.replace(/"/g, "");
+ 
+  const disablePastDate = () => {
+    const today = new Date();
+    const dd = String(today.getDate() + 1).padStart(2, "0");
+    const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+    const yyyy = today.getFullYear();
+    return yyyy + "-" + mm + "-" + dd;
+};
 
-const navigate =useNavigate();
-  function handleSubmit(event){
+  function handleSubmit(event) {
     event.preventDefault();
-    // const img = new FormData();
-    //     img.append("file", file);
-    //     img.append("fileName", fileName);
+   
+   
+    setfname(newname);
+    console.log(fname)
+    console.log(id)
+
 
     let product = {
       pname,
-      min_price,
-     quantity,
+      minPrice,
+      quantity,
       endBDate,
-      img
+      img,
+
+      discription,
+      fname
     };
-    
 
 
-console.log(img);
+
+
     FarmerService.addProduct(product).then(res => {
       console.log(res);
       console.log(res.data);
-      
-let path=`farmer`;
-navigate(path); 
-      
+
+
+
     })
-  
+    // console.log("inside add");
+
   }
 
+  
+
   return (
-    <div className="Login">
-
-<form onSubmit={handleSubmit} >
-                <h3>ADD Product</h3>
-
-                <div className="form-group">
-                    
-                     <input type="text" className="form-control" placeholder="Enter Product name" value={pname}  onChange={(e) => setPname(e.target.value)} />
-                  
-                </div>
-
-                
-
-                <div className="form-group">
-                    
-                    <input type="text" className="form-control" placeholder="Enter minprice"  value={min_price}  onChange={(e) => setMinPrice(e.target.value)}/>
-                </div>
-
-                <div className="form-group">
-                    
-                    <input type="text" className="form-control" placeholder="Enter quantity" value={quantity}  onChange={(e) => setQuantity(e.target.value)} />
-                </div>
-
-                <div className="form-group">
-               
     
-     <input type="date" className="form-control" placeholder="Select EndDate"  value={endBDate}  onChange={(e) => setEndbdate(e.target.value)}  />
-                </div>
 
-                <div className="form-group">
+    <>
+    
+      <h3>ADD PRODUCT</h3>
+      <Row>
+        <Col md={1}>
+          <img src={img} width="300" height="400"></img>
+        </Col>
+        <Col md={11}>
+          <div className="Login" style={{ padding: "0px 0px 0px 0px" }}>
+
+            <form onSubmit={handleSubmit} >
+
+
+              <div className="form-floating mt-2">
+
+                <input type="text" className="form-control" placeholder="Enter Product name" value={pname} onChange={(e) =>{setPname(e.target.value);setfname(newname);}} />
+<label>Enter Product name</label>
+              </div>
+
+              
+
+              <div className="form-floating mt-2">
+
+                <input type="number" className="form-control" placeholder="Enter Base price" value={minPrice} onChange={(e) => setMinPrice(e.target.value)} />
+             <label>Enter Base price</label>
+              </div>
+
+              <div className="form-floating mt-2">
+
+                <input type="number" className="form-control" placeholder="Enter quantity" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
+                <label>Enter quantity</label>   </div>
+
+              <div className="form-floating mt-2">
+
+
+                <input type="date" className="form-control" placeholder="Select EndDate" min={disablePastDate()} value={endBDate} onChange={(e) => { setEndbdate(e.target.value); }} />
+                <label>Select EndDate</label>        </div>
+
+              <div className="form-floating mt-2">
+               
+
+                <input type="file" className="form-control" multiple onChange={(onChangePicture)} />
                 <label>Select Image</label>
-    
-                <input type="file" className="form-control"  multiple onChange={(onChangePicture)}/>
-                </div>
+              </div>
 
-               
+              <div className="form-floating mt-2">
+              <input type="text" className="form-control" placeholder="Enter all details" value={discription} onChange={(e) => setdescription(e.target.value)} />
+              <label>Enter all details</label>  </div>
+        
 
-             
-                <button type="submit" className="btn btn-dark btn-lg btn-block" >ADD</button>
-               
-            </form>
+          <button type="submit" className="btn btn-dark btn-lg btn-block" onClick={ () => alert("ADD Sucessfully")}>ADD</button>
+          
+
+        </form>
+        
 
 
-    </div>
+      </div>
+
+    </Col>
+
+
+  </Row >
+  </>
   )
 }
 
